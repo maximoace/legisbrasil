@@ -16,14 +16,23 @@ class WebDriver():
     def connect(self, url):
         self.driver.get(url)
 
-    def find_by_id(self, id):
-        return self.driver.find_element(By.ID, id)
+    def find_by_id(self, id, element:WebElement = None):
+        if element:
+            return element.find_element(By.ID, id)
+        else:
+            return self.driver.find_element(By.ID, id)
 
-    def find_by_class(self, classname):
-        return self.driver.find_element(By.CLASS_NAME, classname)
+    def find_by_class(self, classname, element:WebElement = None):
+        if element:
+            element.find_element(By.CLASS_NAME, classname)
+        else:
+            return self.driver.find_element(By.CLASS_NAME, classname)
 
-    def select_all_by_class(self, classname):
-        return self.driver.find_elements(By.CLASS_NAME, classname)
+    def select_all_by_class(self, classname, element:WebElement = None):
+        if element:
+            element.find_elements(By.CLASS_NAME, classname)
+        else:
+            return self.driver.find_elements(By.CLASS_NAME, classname)
 
     def click(self, element:WebElement):
         element.click()
