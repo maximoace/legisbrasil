@@ -1,5 +1,7 @@
-from bs4 import BeautifulSoup
 from .driver.webdriver import WebDriver
+from database.database import Database
+
+from bs4 import BeautifulSoup
 
 class WebScrapper():
 
@@ -8,12 +10,16 @@ class WebScrapper():
         self.data = None
 
     def start(self):
-        self.get_data()
+        if not Database().exists():
+            self.get_data()
+            self.save_data()
 
     def get_data(self):
         self.webdriver.connect("https://www.camara.leg.br/deputados/quem-sao/resultado?legislatura=56")
-        self.data = self.collect_basic_data()
-        pass
+        self.collect_basic_data()
+
+    def save_data(self):
+        Database().save(self.data)
 
     def collect_basic_data(self):
         data = list()
@@ -32,7 +38,7 @@ class WebScrapper():
                 self.webdriver.click(next_page)
             else:
                 break
-        return
+        self.data = data
 
     def collect_id(self, deputy, soup):
         link = soup.find('a')['href']
