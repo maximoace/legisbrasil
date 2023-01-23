@@ -11,7 +11,13 @@ from selenium.webdriver.remote.webelement import WebElement
 class WebDriver():
 
     def __init__(self) -> None:
+        self.driver = None
+
+    def start(self):
         self.driver = driver.Edge(service = EdgeService(EdgeChromiumDriverManager().install()))
+
+    def finish(self):
+        self.driver.close()
 
     def connect(self, url):
         self.driver.get(url)

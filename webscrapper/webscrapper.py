@@ -15,8 +15,10 @@ class WebScrapper():
             self.save_data()
 
     def get_data(self):
+        self.webdriver.start()
         self.webdriver.connect("https://www.camara.leg.br/deputados/quem-sao/resultado?legislatura=56")
         self.collect_basic_data()
+        self.webdriver.finish()
 
     def save_data(self):
         Database().save(self.data)
