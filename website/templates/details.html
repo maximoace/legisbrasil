@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super()  }}
+<script type="text/javascript" src="{{  url_for('static', filename='js/details.js')  }}"></script>
+{% endblock %}
+
+{% block title %} Details {% endblock %} 
+
+{% block content %}
+<div class="row mt-5">
+    <p>
+        <button name="back" type="button" class="btn btn-outline-success" onclick='back(`{{  url_for("search")  }}`)'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+            </svg>
+            Voltar
+        </button>
+    </p>
+</div>
+<div class="row mt-5 mb-4 align-items-center justify-content-center">
+    <p class="fs-1 text-center"> {{ data['name'] }} </p>
+</div>
+<div class="col">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <span class="fw-bold">Nome Completo:</span>
+            <p>{{  data['fullname']  }}</p>
+        </li>
+        <li class="list-group-item">
+            <span class="fw-bold">Profissões:</span>
+            <p>{{  data['jobs']  }}</p>
+        </li>
+        <li class="list-group-item">
+            <span class="fw-bold">Aniversário:</span>
+            <p>{{  data['birthday']  }}</p>
+        </li>
+        <li class="list-group-item">
+            <span class="fw-bold">Partido:</span>
+            <p>{{  data['party']  }}</p>
+        </li>
+        <li class="list-group-item">
+            <span class="fw-bold">Estado:</span>
+            <p>{{  data['state']  }}</p>
+        </li>
+        <li class="list-group-item">
+            <span class="fw-bold">E-mail:</span>
+            <p>{{  data['email']  }}</p>
+        </li>
+        <li class="list-group-item">
+            <span class="fw-bold">Telefone:</span>
+            <p>{{  data['phone']  }}</p>
+        </li>
+        <li class="list-group-item">
+            <span class="fw-bold">Endereço:</span>
+            <p>{{  data['address']  }}</p>
+        </li>
+        <li class="list-group-item">
+            <span class="fw-bold">Escolaridade:</span>
+            <p>{{  data['scholarity']  }}</p>
+        </li>
+        <li class="list-group-item">
+            <span class="fw-bold">Naturalidade:</span>
+            <p>{{  data['pob']  }}</p>
+        </li>
+        <li class="list-group-item">
+            <span class="fw-bold">Mandatos:</span>
+            <p>{{  data['mandate']  }}</p>
+        </li>
+    </ul>
+</div>
+{% endblock %}

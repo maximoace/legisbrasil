@@ -3,7 +3,7 @@
 {% block head %}
 {{ super() }}
 <link rel="stylesheet" href="static/css/search.css"></link>
-<script src="static/js/search.js" type="text/javascript" defer></script>
+<script src="{{  url_for('static', filename='js/search.js')  }}" type="text/javascript" defer></script>
 {% endblock %}
 
 {% block title %}Search{% endblock %}
@@ -33,6 +33,7 @@
                         <th scope="col">Partido</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Status</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="table-body" data-container>
@@ -42,7 +43,7 @@
                             <td class="party" data-party></td>
                             <td class="state" data-state></td>
                             <td class="status" data-status></td>
-                            <td class="details" href="">detalhes</td>
+                            <td class="details"><a class="link-success" href="#" data-link>detalhes</a></td>
                         </tr>
                     </template>
                 </tbody>
