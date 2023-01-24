@@ -16,9 +16,9 @@ def search():
 @app.route("/fetchTable")
 def fetchTable():
     data = Database().read_basic()
-    print(data)
     return data
 
 @app.route("/details/<id>")
-def details():
-    pass
+def details(id):
+    data = Database().read_detailed(id)
+    return render_template('details.html', data=data)
