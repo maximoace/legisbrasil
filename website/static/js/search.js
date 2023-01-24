@@ -21,10 +21,12 @@ fetch('/fetchTable')
         const party = row.querySelector("[data-party]")
         const state = row.querySelector("[data-state]")
         const status = row.querySelector("[data-status]")
+        const link = row.querySelector("[data-link]")
         name.textContent = deputy.name
         party.textContent = deputy.party
         state.textContent = deputy.state
         status.textContent = deputy.status
+        link.href = `/details/${deputy.id}`
         dataContainer.append(row)
         return {name: deputy.name, element: row}
     })
